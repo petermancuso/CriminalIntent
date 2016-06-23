@@ -10,6 +10,8 @@ import java.util.UUID;
 public class CrimeLab {
 
     private static CrimeLab sCrimeLab;
+    // List is an interface that supports an ordered list of objects of a given type
+    // Commonly used implementation of List is ArrayList, which uses regular Java array to store the elements
     private List<Crime> mCrimes;
 
     public static CrimeLab get(Context context) {
@@ -19,6 +21,7 @@ public class CrimeLab {
         return sCrimeLab;
     }
     private CrimeLab(Context context) {
+        // Diamond notation is short hand for mCrimes = new ArrayList<Crime>();
         mCrimes = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             Crime crime = new Crime();
