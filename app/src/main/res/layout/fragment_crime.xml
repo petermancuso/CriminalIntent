@@ -34,3 +34,4 @@
               android:text="@string/crime_solved_label"
         />
 </LinearLayout>
+    <!-- Activity Layout for crime fragment//-->

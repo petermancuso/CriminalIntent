@@ -3,6 +3,8 @@ package analog.ninja.criminalintent;
 import java.util.Date;
 import java.util.UUID;
 
+// Model Layer containing information about a crime
+
 public class Crime {
     private UUID mId;
     private Date mDate;
@@ -28,7 +30,7 @@ public class Crime {
 
 
     public Crime() {
-
+        // Generate unique identifiers
         mId = UUID.randomUUID();
         mDate = new Date();
     }

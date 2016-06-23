@@ -21,17 +21,27 @@ public class CrimeFragment extends Fragment {
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
+
+    // Called by Hosting Activity. Can be used to save and retrieve state.
+    // Note: Fragement.onCreate() does not inflate the fragments view.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mCrime = new Crime();
     }
+
+    // Inflate the layout for the fragment's view and return the inflated view.
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        // Parameters (layout resource ID, view's parent, add/not add to parent)
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
 
+        // After inflation, get a reference to EditText
         mTitleField =(EditText) v.findViewById(R.id.crime_title);
+
+        // Wire up the EditText to respond to user input
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(
@@ -48,6 +58,8 @@ public class CrimeFragment extends Fragment {
             // This one too
             }
         });
+
+        // Wire up widgets
         mDateButton = (Button)v.findViewById(R.id.crime_date);
         mDateButton.setText(mCrime.getDate().toString());
         mDateButton.setEnabled(false);
