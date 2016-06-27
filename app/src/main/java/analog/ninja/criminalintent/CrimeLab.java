@@ -1,11 +1,13 @@
 package analog.ninja.criminalintent;
 
-
 import android.content.Context;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+/*To create a singleton, you create a class with a private constructor and a get() method. If the instance
+already exists, then get() simply returns the instance. If the instance does not exist yet, then get() will
+call the constructor to create it.*/
 
 public class CrimeLab {
 
