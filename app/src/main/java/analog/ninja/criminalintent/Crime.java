@@ -10,6 +10,15 @@ public class Crime {
     private Date mDate;
     private boolean mSolved;
     private String mTitle;
+    private int mPosition;
+
+    public int getPosition() {
+        return mPosition;
+    }
+
+    public void setPosition(int position) {
+        mPosition = position;
+    }
 
     public boolean isSolved() {
         return mSolved;

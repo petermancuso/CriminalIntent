@@ -11,8 +11,9 @@ import java.util.UUID;
 
 public class CrimeActivity extends SingleFragmentActivity{
 
+    // The newIntent method is used by the CrimeHolder (CrimeListFragment.java)
+    // to pass fragment arguments (in this case, crimeID) to the ViewHolder
     private static final String EXTRA_CRIME_ID = "ninja.analog.criminalintent.crime_id";
-
     public static Intent newIntent(Context packageContext, UUID crimeId) {
         Intent intent = new Intent(packageContext, CrimeActivity.class);
         intent.putExtra(EXTRA_CRIME_ID, crimeId);
@@ -24,5 +25,4 @@ public class CrimeActivity extends SingleFragmentActivity{
         UUID crimeId = (UUID) getIntent().getSerializableExtra(EXTRA_CRIME_ID);
         return CrimeFragment.newInstance(crimeId);
     }
-
 }

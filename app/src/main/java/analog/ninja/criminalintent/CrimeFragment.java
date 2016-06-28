@@ -1,5 +1,7 @@
 package analog.ninja.criminalintent;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -20,12 +22,16 @@ import analog.ninja.criminalintent.R;
 public class CrimeFragment extends Fragment {
 
     private static final String ARG_CRIME_ID = "crime_id";
-
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mSolvedCheckBox;
 
+    public void returnResult(){
+        Intent data = new Intent();
+        data.putExtra(ARG_CRIME_ID, mCrime.getPosition());
+        getActivity().setResult(Activity.RESULT_OK, data);
+    }
 
     // newInstance is called to instantiate objects, instead of the constructor
     // Method that accepts a UUID, creates an arguments bundle, creates a fragment instance,
@@ -45,6 +51,7 @@ public class CrimeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         UUID crimeId = (UUID) getArguments().getSerializable((ARG_CRIME_ID));
         mCrime = CrimeLab.get(getActivity()).getCrime(crimeId);
+        returnResult();
     }
 
     // Inflate the layout for the fragment's view and return the inflated view.
@@ -79,13 +86,11 @@ public class CrimeFragment extends Fragment {
         // Wire up the EditText to respond to user input
         mTitleField.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(
-                    CharSequence s, int start, int count, int after) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             // This space intentionally left blank
             }
             @Override
-            public void onTextChanged(
-                    CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mCrime.setTitle(s.toString());
             }
             @Override
