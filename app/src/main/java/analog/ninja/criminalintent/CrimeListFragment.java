@@ -62,7 +62,9 @@ public class CrimeListFragment extends Fragment{
             mCrimeRecyclerView.setAdapter(mAdapter);
         // If returning from detail view, notify adaptor of data change
         } else{
-            mAdapter.notifyItemChanged(c);
+
+            //mAdapter.notifyItemChanged(c);
+            mAdapter.notifyDataSetChanged();
 
         }
     }
