@@ -21,6 +21,7 @@ public class DatePickerFragment extends DialogFragment {
     private static final String ARG_DATE = "date";
     private DatePicker mDatePicker;
 
+    // Put date in arguments bundle and return fragment.
     public static DatePickerFragment newInstance(Date date) {
         Bundle args = new Bundle();
         args.putSerializable(ARG_DATE, date);
@@ -62,6 +63,8 @@ public class DatePickerFragment extends DialogFragment {
         //A positive button is what the user should press to accept what the dialog presents or to take the
         //dialog’s primary action.
     }
+
+    //Send result back to CrimeFragment
     private void sendResult(int resultCode, Date date) {
         if (getTargetFragment() == null) {
             return;
