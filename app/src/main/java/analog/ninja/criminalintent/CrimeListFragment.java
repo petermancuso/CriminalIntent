@@ -146,6 +146,7 @@ public class CrimeListFragment extends Fragment{
         } else{
 
             //mAdapter.notifyItemChanged(c);
+            mAdapter.setCrimes(crimes);
             mAdapter.notifyDataSetChanged();
         }
         //Updates subtitle upon return from CrimeFragment
@@ -214,6 +215,11 @@ public class CrimeListFragment extends Fragment{
         @Override
         public int getItemCount() {
             return mCrimes.size();
+        }
+
+        //swaps out the crims displayed.
+        public void setCrimes(List<Crime> crimes){
+            mCrimes = crimes;
         }
     }
 }

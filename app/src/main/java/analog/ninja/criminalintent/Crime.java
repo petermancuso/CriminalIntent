@@ -39,11 +39,14 @@ public class Crime {
 
 
     public Crime() {
-        // Generate unique identifiers
-        mId = UUID.randomUUID();
-        mDate = new Date();
+        //calls constructor below
+        this(UUID.randomUUID());
     }
 
+    public Crime(UUID id) {
+        mId = id;
+        mDate = new Date();
+    }
 
     public UUID getId() {
         return mId;

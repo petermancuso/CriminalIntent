@@ -58,6 +58,14 @@ public class CrimeFragment extends Fragment {
         returnResult();
     }
 
+    //Crime instances get written to CrimeLab when CrimeFragment is done.
+    @Override
+    public void onPause() {
+        super.onPause();
+        CrimeLab.get(getActivity())
+                .updateCrime(mCrime);
+    }
+
     // Inflate the layout for the fragment's view and return the inflated view.
 
     @Override
