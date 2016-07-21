@@ -96,7 +96,6 @@ public class CrimeLab {
         } finally {
             cursor.close();
         }
-
     }
 
     public void updateCrime(Crime crime) {
@@ -116,6 +115,7 @@ public class CrimeLab {
         values.put(CrimeDbSchema.CrimeTable.Cols.TITLE, crime.getTitle());
         values.put(CrimeDbSchema.CrimeTable.Cols.DATE, crime.getDate().getTime());
         values.put(CrimeDbSchema.CrimeTable.Cols.SOLVED, crime.isSolved() ? 1 : 0);
+        values.put(CrimeDbSchema.CrimeTable.Cols.SUSPECT, crime.getmSuspect());
         return values;
     }
 
