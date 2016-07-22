@@ -29,10 +29,10 @@ public class Crime {
         mSolved = solved;
     }
 
-    public String getmSuspect(){
+    public String getSuspect(){
         return mSuspect;
     }
-    public void setmSuspect(String suspect){
+    public void setSuspect(String suspect){
         mSuspect = suspect;
     }
 
