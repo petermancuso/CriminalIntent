@@ -31,7 +31,19 @@ public class CrimeListFragment extends Fragment{
     private static final String SAVED_SUBTITLE_VISIBLE = "subtitle";
     private int crimeChanged;
     private boolean mSubtitleVisible;
+    private Callbacks mCallbacks;
 
+    /**
+     * Required interface for hosting activities.
+     */
+    public interface Callbacks {
+        void onCrimeSelected(Crime crime);
+    }
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        mCallbacks = (Callbacks) activity;
+    }
 
     //Lets FragmentManager know that CrimeListFragment needs to receive menu callbacks.
     @Override
@@ -80,6 +92,13 @@ public class CrimeListFragment extends Fragment{
         outState.putBoolean(SAVED_SUBTITLE_VISIBLE, mSubtitleVisible);
     }
 
+    // Part of the Callback interface, along with onAttach.
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+    }
+
     //Inflates menu resource
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -106,9 +125,8 @@ public class CrimeListFragment extends Fragment{
             case R.id.menu_item_new_crime:
                 Crime crime = new Crime();
                 CrimeLab.get(getActivity()).addCrime(crime);
-                Intent intent = CrimePagerActivity
-                        .newIntent(getActivity(), crime.getId());
-                startActivity(intent);
+                updateUI(0);
+                mCallbacks.onCrimeSelected(crime);;
                 return true;
             case R.id.menu_item_show_subtitle:
                 mSubtitleVisible = !mSubtitleVisible;
@@ -136,7 +154,7 @@ public class CrimeListFragment extends Fragment{
     }
 
     //Connects the Adapter to RecyclerView. Creates a CrimeAdapter and set it on the RecyclerView.
-    private void updateUI(int c) {
+    public void updateUI(int c) {
         CrimeLab crimeLab = CrimeLab.get(getActivity());
         List<Crime> crimes = crimeLab.getCrimes();
         if(mAdapter == null) {
@@ -177,11 +195,8 @@ public class CrimeListFragment extends Fragment{
         }
         @Override
         public void onClick(View v) {
-            Intent intent = CrimePagerActivity.newIntent(getActivity(), mCrime.getId());
 
-            //Starts Activity from Fragment
-            //startActivity(intent);
-            startActivityForResult(intent, REQUEST_CRIME);
+            mCallbacks.onCrimeSelected(mCrime);
         }
     }
 
