@@ -195,7 +195,6 @@ public class CrimeListFragment extends Fragment{
         }
         @Override
         public void onClick(View v) {
-
             mCallbacks.onCrimeSelected(mCrime);
         }
     }
@@ -232,7 +231,7 @@ public class CrimeListFragment extends Fragment{
             return mCrimes.size();
         }
 
-        //swaps out the crims displayed.
+        //swaps out the crimes displayed.
         public void setCrimes(List<Crime> crimes){
             mCrimes = crimes;
         }

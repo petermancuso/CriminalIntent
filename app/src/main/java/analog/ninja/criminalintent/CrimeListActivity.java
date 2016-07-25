@@ -22,7 +22,7 @@ public class CrimeListActivity extends SingleFragmentActivity implements CrimeLi
             Intent intent = CrimePagerActivity.newIntent(this, crime.getId());
             startActivity(intent);
         } else {
-            //Create fragment transation that removes the existing CrimeFragment from detail_fragment_container
+            //Create fragment transaction that removes the existing CrimeFragment from detail_fragment_container
             //(if there is one in there) and adds the CrimeFragment that you want to see
             Fragment newDetail = CrimeFragment.newInstance(crime.getId());
             getSupportFragmentManager().beginTransaction()
@@ -36,6 +36,6 @@ public class CrimeListActivity extends SingleFragmentActivity implements CrimeLi
         CrimeListFragment listFragment = (CrimeListFragment)
                 getSupportFragmentManager()
                         .findFragmentById(R.id.fragment_container);
-        listFragment.updateUI(0);
+                        listFragment.updateUI(0);
     }
 }
