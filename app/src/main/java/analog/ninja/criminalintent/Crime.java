@@ -46,8 +46,7 @@ public class Crime {
     public void setDate(Date date) {
         mDate = date;
     }
-
-
+    
     public Crime() {
         //calls constructor below
         this(UUID.randomUUID());
@@ -66,11 +65,7 @@ public class Crime {
         return mTitle;
     }
 
-
-
     public void setTitle(String title) {
         mTitle = title;
     }
-
-
 }

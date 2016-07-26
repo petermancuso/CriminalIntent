@@ -15,6 +15,7 @@ public class CrimeListActivity extends SingleFragmentActivity implements CrimeLi
         return R.layout.activity_masterdetail;
     }
 
+
     @Override
     public void onCrimeSelected(Crime crime) {
         //If detail_fragment_container not present, start regular pager activity.
@@ -23,13 +24,12 @@ public class CrimeListActivity extends SingleFragmentActivity implements CrimeLi
             startActivity(intent);
         } else {
             //Create fragment transaction that removes the existing CrimeFragment from detail_fragment_container
-            //(if there is one in there) and adds the CrimeFragment that you want to see
+            //(if there is one in the                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      re) and adds the CrimeFragment that you want to see
             Fragment newDetail = CrimeFragment.newInstance(crime.getId());
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.detail_fragment_container, newDetail)
                     .commit();
         }
-
     }
 
     public void onCrimeUpdated(Crime crime) {
